@@ -8,11 +8,11 @@
 
 arr = [2, 3, 5, 10, 4, 8, 9]
 
-
+# Solution 1.
+# Time complexity: O(N) as we need
+# to just traverse the array
+# Space complexity: O(N) as we use a hash table
 def two_num_sum_hash_table(array, target_sum):
-    # Time complexity: O(N) as we need
-    # to just traverse the array
-    # Space complexity: O(N) as we use a hash table
     hash_table = set()
 
     for x in array:
@@ -24,11 +24,11 @@ def two_num_sum_hash_table(array, target_sum):
 
     return []
 
-
+# Solution 2.
+# Time: O(n log n) because it's
+# the probable complexity of array sorting
+# Space: O(1) because we sort the array in place
 def two_num_sum_sorted_array(array, target_sum):
-    # Time: O(n log n) because it's
-    # the probable complexity of array sorting
-    # Space: O(1) because we sort the array in place
     array.sort()
     i = 0               # Left pointer init position
     j = len(array) - 1  # Right pointer init position

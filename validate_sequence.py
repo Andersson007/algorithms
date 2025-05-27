@@ -5,10 +5,11 @@
 # of the first array.
 
 array = [2, 3, 5, 10, 4, 8, 9]
-sequence1 = [2, 10, 8]
-sequence2 = [-1, 5, 11]
+sequence1 = [2, 10, 8]  # is a subsequence
+sequence2 = [-1, 5, 11]  # is not a subsequence
 
-
+# Time: O(n) when n is the length of the main array
+# Space: O(1) as we're not storing anything extra
 def validate_sequence(array, sequence):
     # Use a pointer to the array and a pointer
     # to the sequence in a loop that works until

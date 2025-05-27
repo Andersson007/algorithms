@@ -7,21 +7,22 @@
 
 array = [-6, 3, 4, 5, 8, 9, 10]
 
-
+# Solution 1.
+# Not optimal but simple and works with unsorted arrays
+# 1. Generate a new array not caring about the order
+# 2. Sort it in place and return
+# Time: O(n log n) as it's the sorting complexity
+# Space: O(n) as we create another array
+# of the same length
 def sorted_squared_array1(array):
-    # Not optimal but simple and works with unsorted arrays
-    # 1. Generate a new array not caring about the order
-    # 2. Sort it in place and return
-    # Time: O(n log n) as it's the sorting complexity
-    # Space: O(n) as we create another array
-    # of the same length
     return sorted([x ** 2 for x in array])
 
 
+# Solution 2.
+# Works only with sorted arrays.
+# Time: O(n)
+# Space: O(n)
 def sorted_squared_array2(array):
-    # Works only with sorted arrays.
-    # Time: O(n)
-    # Space: O(n)
     out_array = [0] * len(array)
 
     # We need to compare absolute values:
