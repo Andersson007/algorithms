@@ -7,7 +7,7 @@
 #    (which is already sorted, right?).
 # 3. Then you start merge those sorted one-element arrays back together.
 #    You compare each two and put them together in sorted order
-#    two make a two-element sorted arrays.
+#    to make a two-element sorted arrays.
 #    You repeat the process until you merge everything back.
 
 arr = [100, 2, 3, 4, 8, 9, 10]
