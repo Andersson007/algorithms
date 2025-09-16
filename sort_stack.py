@@ -43,7 +43,7 @@ def insert(stack, num):
 
     # Otherwise,
     # 1. Remove top element
-    # 2. Recurse until we find a proper placei for num
+    # 2. Recurse until we find a proper place for num
     # 3. Add the top element back
     top = stack.pop()
     insert(stack, num)
