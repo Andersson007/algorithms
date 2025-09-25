@@ -95,9 +95,15 @@ class BST():
                     else:  # When root doesn't have child nodes
                         return self
                 elif parent_node.left == cur_node:
-                    parent_node.left = cur_node.left if cur_node.left is not None else cur_node.right
+                    if cur_node.left is not None:
+                        parent_node.left = cur_node.left
+                    else:
+                        parent_node.left = cur_node.right
                 elif parent_node.right == cur_node:
-                    parent_node.right = cur_node.right if cur_node.right is not None else cur_node.left
+                    if cur_node.right is not None:
+                        parent_node.right = cur_node.right
+                    else:
+                        parent_node.right = cur_node.left
                 break
 
         return self
