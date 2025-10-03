@@ -9,8 +9,32 @@ seq2 = "bandana"
 
 # Dynamic programming: break the problem down into smaller,
 # overlapping subproblems and build up a solution from
-# the bottom up. Store the results of thise subproblems
+# the bottom up. Store the results of these subproblems
 # in a 2D array to avoid re-calculating them.
+
+# Let's say we have two sequences, X and Y.
+# We'll create a 2D table, let's call it dp,
+# ********************************************************************
+# to store the length of the LCS for all possible prefixes of X and Y.
+# ********************************************************************
+# The cell dp[i][j] will hold the length of the LCS between
+# the first i characters of Y and the first j characters of X.
+# Let's use our previous example: X = "banana" and Y = "bandana".
+# Our table will have rows corresponding to characters of Y (plus an empty prefix)
+# and columns for characters of X (plus an empty prefix).
+# db[column][row] == db[i][j].
+
+# X = banana
+# Y = bandana
+#     b a n a n a
+#   0 0 0 0 0 0 0
+# b 0 1 1 1 1 1 1
+# a 0 1 2 2 2 2 2
+# n 0 1 2 3 3 3 3
+# d 0 1 2 3 3 3 3
+# a 0 1 2 3 4 4 4
+# n 0 1 2 3 4 5 5
+# a 0 1 2 3 4 5 6
 
 # Time O(M x N)
 # Space O(M x N)
@@ -41,3 +65,4 @@ def longest_common_subsequence(seq1, seq2):
 
 
 print(longest_common_subsequence(seq1, seq2))
+print(longest_common_subsequence(" ", " "))
