@@ -5,7 +5,7 @@
 # The chars do not need to be next to each other.
 seq1 = "banana"
 seq2 = "bandana"
-# output = 4  # as he longest common subsequence is "bana"
+# output = 6  # as he longest common subsequence is "banana"
 
 # Dynamic programming: break the problem down into smaller,
 # overlapping subproblems and build up a solution from
