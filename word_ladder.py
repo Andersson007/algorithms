@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# Word Ladder.
 # You are given two words: begin_word and end_word,
 # and a dictionary of words called word_list.
 # Your task is to determine the length of the shortest
