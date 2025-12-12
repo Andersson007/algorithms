@@ -9,8 +9,8 @@
 # * F(n) = F(n-1) + F(n-2) for n >= 2
 
 # Recursive solution:
-# O(2^n) Time
-# O(n) Space
+# O(2^n) Time: it computes the same numbers many times
+# O(n) Space: the max recursion depth is n
 def fib_rec(n):
     if n == 0:
         return 0
