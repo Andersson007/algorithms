@@ -11,20 +11,20 @@
 # Recursive solution:
 # O(2^n) Time
 # O(n) Space
-def gen_nth_fibonacci_rec(n):
+def fib_rec(n):
     if n == 0:
         return 0
     elif n == 1:
         return 1
     else:
-        return gen_nth_fibonacci_rec(n - 1) + gen_nth_fibonacci_rec(n - 2)
+        return fib_rec(n - 1) + fib_rec(n - 2)
 
 
 # Iterative solution:
 # O(n) Time
 # O(1) Space
 # Returns F_n where F_0=0, F_1=1
-def nth_fibonacci(n):
+def fib(n):
     a = 0
     b = 1
     for _ in range(n):
@@ -35,5 +35,5 @@ def nth_fibonacci(n):
     return a
 
 
-print(gen_nth_fibonacci_rec(5))
-print(nth_fibonacci(5))
+print(fib_rec(5))
+print(fib(5))
