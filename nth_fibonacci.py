@@ -12,7 +12,7 @@
 # O(2^n) Time
 # O(n) Space
 def gen_nth_fibonacci_rec(n):
-    if n <= 0:
+    if n == 0:
         return 0
     elif n == 1:
         return 1
@@ -23,18 +23,17 @@ def gen_nth_fibonacci_rec(n):
 # Iterative solution:
 # O(n) Time
 # O(1) Space
-def gen_nth_fibonacci_iter(n):
-    if n == 1:
-        return 0
+# Returns F_n where F_0=0, F_1=1
+def nth_fibonacci(n):
+    a = 0
+    b = 1
+    for _ in range(n):
+        # a becomes the next fib number
+        # b becomes the one after that
+        a, b = b, a + b
 
-    f0 = 0
-    f1 = 1
-    for _ in range(2, n + 1):
-        next_fib = f1 + f0
-        f0 = f1
-        f1 = next_fib
+    return a
 
-    return f1
 
-print(gen_nth_fibonacci_rec(10))
-print(gen_nth_fibonacci_iter(10))
+print(gen_nth_fibonacci_rec(5))
+print(nth_fibonacci(5))

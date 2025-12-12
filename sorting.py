@@ -28,7 +28,7 @@ def insertion_sort(nums):
 # Time O(N log N): best/average; O(N^2) worst
 #   when constantly picking a bad pivot like the smallest
 #   or largest element in the input array
-# Space O(lon N): due to recursion
+# Space O(log N): due to recursion
 def quick_sort(nums):
 
     if len(nums) <= 1:
