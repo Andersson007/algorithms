@@ -59,3 +59,53 @@ def smallest_diff(array1, array2):
 
 
 print(smallest_diff(array1, array2))
+
+
+# Mine solutions
+# Time (N log N + M log M)
+# Space O(1)
+def smallest_diff_mine(arr1, arr2):
+    arr1.sort()
+    arr2.sort()
+
+    smallest = float("inf")
+    i, j = 0, 0
+
+    while i < len(arr1) and j < len(arr2):
+        diff = abs(arr1[i] - arr2[j])
+        smallest = min(diff, smallest)
+
+        if arr1[i] < arr2[j]:
+            i += 1
+        else:
+            j += 1
+
+    return smallest
+
+
+# Time (N log N + M log M)
+# Space O(1)
+def smallest_diff_pair(arr1, arr2):
+    arr1.sort()
+    arr2.sort()
+
+    pair = (None, None)
+    smallest = float("inf")
+    i, j = 0, 0
+
+    while i < len(arr1) and j < len(arr2):
+        diff = abs(arr1[i] - arr2[j])
+        if diff < smallest:
+            smallest = diff
+            pair = (arr1[i], arr2[j])
+
+        if arr1[i] < arr2[j]:
+            i += 1
+        else:
+            j += 1
+
+    return pair
+
+
+print(smallest_diff_mine([1, 3, 15, 11, 2], [23, 127, 235, 19, 8]))
+print(smallest_diff_pair([1, 3, 15, 11, 2], [23, 127, 235, 19, 8]))
