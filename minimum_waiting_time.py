@@ -37,3 +37,38 @@ def min_waiting_time(durations):
         total_wait_time += cumulative_time
 
     return total_wait_time
+
+
+# Option 2
+# Long queries delay many future queries..
+# Short queries delay fewer future queries.
+# Always execute the query with the smallest
+# duration next.
+# A greedy algorithm:
+# * Makes the best intermediate choice
+# * Never revisits or undoes decisions
+# * Aims to reach the optimal solution through these local choices.
+# * Probably optimal for certain problems.
+# The waiting time of a query is the total duration of all queries
+# before it. Sorting in ascending order minimizes it.
+
+# “I sort the queries from shortest to longest,
+# then accumulate how long each query waits behind the ones before it.”
+# Time O(N log N)
+# Space O(1)
+def min_wait_time(queries):
+    queries.sort()
+    total_wait = 0
+    prev_wait = 0
+
+    for time in queries:
+        # Add the running sum of how long prev queries
+        # take to the total waiting time
+        total_wait += prev_wait
+        # Then add the current query time to the running sum
+        prev_wait += time
+
+    return total_wait
+
+
+print(min_wait_time([3, 2, 1, 2, 6]))
