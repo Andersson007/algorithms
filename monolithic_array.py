@@ -44,3 +44,24 @@ print(monolithic_array(array3))
 print(monolithic_array(array4))
 print(monolithic_array(array5))
 print(monolithic_array(array6))
+
+
+# Time O(N)
+# Space O(1)
+def is_monolithic(array):
+    if len(array) <= 3:
+        return True
+
+    direction = 0  # 0 = unknown, 1 = increasing, -1 = decreasing
+
+    for i in range(len(array) - 1):
+        if array[i + 1] > array[i]:
+            if direction == -1:  # decr
+                return False
+            direction = 1
+        elif array[i + 1] < array[i]:
+            if direction == 1:  # incr
+                return False
+            direction = -1
+
+    return True

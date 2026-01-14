@@ -9,7 +9,9 @@ array = [2, 1, 2, 2, 2, 3, 4, 2]
 num = 2
 # output = [1, 3, 4, 2, 2, 2, 2, 2]
 
-
+# Time O(N)
+# Space O(N)
+# Order of other elements is not important
 def move_elem_to_end(array, num):
     left = 0
     right = len(array) - 1
@@ -25,6 +27,23 @@ def move_elem_to_end(array, num):
         left += 1
 
     return array
+
+
+# Time O(N)
+# Space O(N)
+# Order of other elements is important
+def move_to_end_order(array, num):
+    output = []
+
+    for elem in array:
+        if elem != num:
+            output.append(elem)
+
+    len_diff = len(array) - len(output)
+    if len_diff:
+        output.extend([num for _ in range(len_diff)])
+
+    return output
 
 
 print(move_elem_to_end(array, 2))
