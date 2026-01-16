@@ -28,3 +28,30 @@ def run_length_encoding(string):
 
 
 print(run_length_encoding(string))
+
+
+# Time O(N)
+# Space O(N)
+def run_len_encoding(string):
+    encoded = []
+
+    cnt = 1
+    for i in range(len(string)):
+        if i == len(string) - 1:
+            encoded.append(str(cnt) + string[i])
+
+        elif string[i] == string[i + 1]:
+            if cnt == 9:
+                encoded.append(str(cnt) + string[i])
+                cnt = 1
+                continue
+
+            cnt += 1
+        else:
+            encoded.append(str(cnt) + string[i])
+            cnt = 1
+
+    return ''.join(encoded)
+
+
+print(run_len_encoding(string))
