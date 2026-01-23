@@ -51,3 +51,20 @@ my_list_head = remove_dup_from_ll(node1)
 while my_list_head is not None:
     print(my_list_head.value)
     my_list_head = my_list_head.next
+
+
+# Time O(N)
+# Space O(1)
+def remove_duplicates_from_list(head):
+    current = head
+
+    while current and current.next:
+        # Compares each node value with the next one
+        if current.value == current.next.value:
+            # If duplicate, skip it
+            current.next = current.next.next
+        else:
+            # Otherwise, move forward
+            current = current.next
+
+    return head

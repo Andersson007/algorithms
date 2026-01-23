@@ -46,22 +46,48 @@ def num_ways_make_change(target_amount, coins):
     # to make change for every single amount from 0
     # up to our target_amount.
     ways = [0 for amount in range(target_amount + 1)]
-    # ways[0] will store the number of ways to make change for 0
-    # ways[1] will store the number of ways to make change for 1
+    # ways[0] will store the number of ways (combinations) to make change for 0
+    # ways[1] will store the number of ways (combinations) to make change for 1
     # etc. up to ways[target_amount]
 
     ways[0] = 1  # Our base case to make 0 and
                  # there's only one way to make it:
-                 # not to use any coins.
+                 # not to use any coins. And no ways to make any other amount.
+    # Coin = 1
+    # ways = [1, 0, 0, 0, 0]
+    # If you only have coin 1, there is exactly one way to make any amount.
+    # Updating:
+    # ways[1] += ways[0] → 1
+    # ways[2] += ways[1] → 1
+    # ways[3] += ways[2] → 1
+    # ways[4] += ways[3] → 1
+    #
+    # Coin = 2
+    # For every amount ≥ 2, How many ways could I make this amount if I add one 2?
+    # ways[2] += ways[0] → 1 + 1 = 2
+    # ways[3] += ways[1] → 1 + 1 = 2
+    # ways[4] += ways[2] → 1 + 2 = 3
+    #
+    # Coin = 3
+    # ways[3] += ways[0] → 2 + 1 = 3
+    # ways[4] += ways[1] → 3 + 1 = 4
+    # ways = [1, 1, 2, 3, 4]
 
     # The key insight is that for any given coin, the number of ways
     # you can make a certain curr_amount is increased by the number of
     # ways you could make curr_amount - coin.
     # Why? Because you can take all the combination made curr_amount - coin
     # and simply add your current coin to the to make curr_amount.
+
+    # “Count all ways using coin 1, then coin 2, then coin 3…”
     for coin in coins:
         for curr_amount in range(coin, target_amount + 1):
-            ways[curr_amount] += ways[curr_amount - coin]
+            # “Every way to make (amount - coin) becomes
+            # a new way to make amount by adding this coin.”
+            # Or “Add this coin to all the ways I already know.”
+            # For example, any way to make 4 with a 2 looks like:
+            # (some way to make 2) + a 2 coin
+            ways[curr_amount] = ways[curr_amount] + ways[curr_amount - coin]
 
     return ways[target_amount]
 
