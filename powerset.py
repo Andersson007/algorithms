@@ -14,7 +14,7 @@ array = [1, 2]
 # Time O(N * 2^N): the outer loop runs N times.
 #   The inner loop's number of iterations doubles with each step
 #   of the outer loop. The total number of subsets generated is 2^N.
-# Space O(N * 2^N): A set with N elements has 2^N subsets, see ^.
+# Space O(2^N): A set with N elements has 2^N subsets, see ^.
 def powerset(array):
     # The algorithm builds the powerset incrementally.
     # Start with a base case: an empty set
