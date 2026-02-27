@@ -6,7 +6,7 @@
 #   array as the top of the stack.
 # * You're only allowed to pop elements from the top of the stack
 #   by removing elements from the end of the array using
-#   the builtin .pop() methid.
+#   the builtin .pop() method.
 # * Push elements to the top using the builtin .append() method.
 # * Peek at the element on the top by accessing the last element.
 # * You're not allowed to perform any other operations.
