@@ -51,3 +51,31 @@ print(merge_intervals(intervals))
 print(merge_intervals([[1, 4], [3, 6], [8, 9], [9, 12]]))
 print(merge_intervals([[1, 2]]))
 print(merge_intervals([[1, 2], [4, 5]]))
+
+
+# Time O(N log N): sorting complexity
+# Space O(N): because we create a new list
+def merge_intervals2(intervals):
+    intervals.sort(key=lambda x: x[0])
+
+    output = [intervals[0]]
+    i = 0
+    j = 1
+
+    while j < len(intervals):
+        print(output)
+        if output[i][1] >= intervals[j][0]:
+            if intervals[j][1] > output[i][1]:
+                output[i][1] = intervals[j][1]
+
+            j += 1
+            continue
+
+        output.append(intervals[j])
+        i += 1
+        j += 1
+
+    return output
+
+
+print(merge_intervals2(intervals))

@@ -26,28 +26,30 @@ seq2 = "bandana"
 
 # X = banana
 # Y = bandana
-#     b a n a n a
-#   0 0 0 0 0 0 0
-# b 0 1 1 1 1 1 1
-# a 0 1 2 2 2 2 2
-# n 0 1 2 3 3 3 3
-# d 0 1 2 3 3 3 3
-# a 0 1 2 3 4 4 4
-# n 0 1 2 3 4 5 5
-# a 0 1 2 3 4 5 6
+#      -> i
+#      b a n a n a
+# j  0 0 0 0 0 0 0 (m)
+#  b 0 1 1 1 1 1 1
+#  a 0 1 2 2 2 2 2
+#  n 0 1 2 3 3 3 3
+#  d 0 1 2 3 3 3 3
+#  a 0 1 2 3 4 4 4
+#  n 0 1 2 3 4 5 5
+#  a 0 1 2 3 4 5 6
+#   (n)
 
 # Time O(M x N)
 # Space O(M x N)
 def longest_common_subsequence(seq1, seq2):
-    m = len(seq1)
-    n = len(seq2)
+    m = len(seq1)  # Length of "banana"
+    n = len(seq2)  # Length of "bandana"
 
     # Create a DP table to store results of subproblems.
     # dp[i][j] will contain the length of LCS of seq1[0..i-1] and seq2[0..j-1]
     # We add +1 to dimensions to handle empty string cases easily.
     dp = [[0] * (n + 1) for _ in range(m + 1)]
 
-    # Build the table in a bottom-up manner
+    # Fill out the table in a bottom-up manner
     for i in range(1, m + 1):
         for j in range(1, n + 1):
             # If the characters at the current position match
