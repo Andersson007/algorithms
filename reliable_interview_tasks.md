@@ -71,20 +71,42 @@
 25. **Number of Ways to Make Change** — Count how many distinct combinations of coins sum to a given amount.
 26. **Longest Common Subsequence** — Find the longest subsequence shared by two strings.
 
+## 10. BFS / DFS — Binary Trees
+
+*Traverse a hierarchical node structure either level-by-level (BFS with a queue) or branch-by-branch (DFS via recursion or an explicit stack). A BST is a binary tree where every left descendant is smaller and every right descendant is larger than the node.*
+
+27. **Construct BST from Sorted Array** — Build a height-balanced BST by recursively picking the middle element as the root.
+28. **Validate Binary Search Tree** — Verify that every node satisfies the BST property using DFS with propagated min/max bounds.
+29. **Maximum Depth of Binary Tree** — Find the maximum root-to-leaf depth via recursive DFS.
+30. **Binary Tree Level Order Traversal** — Return node values grouped by level using BFS with a queue.
+31. **Lowest Common Ancestor** — Find the deepest node that is an ancestor of both given nodes in a binary tree.
+
+## 11. Graphs
+
+*A graph is a set of nodes connected by edges — unlike trees, it has no root, edges can be bidirectional, and cycles are allowed. Represented as an adjacency list or matrix. Core techniques are the same DFS/BFS, plus topological sort and Union-Find for connectivity problems.*
+
+32. **Clone Graph** — Deep-copy a graph by traversing it with DFS/BFS and mapping each original node to its new clone. Covers graph construction.
+33. **Number of Islands** — Count connected land regions in a 2D grid by running DFS/BFS from each unvisited land cell.
+34. **Course Schedule** — Determine if all courses can be finished by detecting cycles in a directed graph (topological sort / DFS).
+35. **Rotting Oranges** — Find the minimum time for all oranges to rot using multi-source BFS from all initially rotten cells simultaneously.
+36. **Number of Connected Components** — Count distinct connected components in an undirected graph using DFS or Union-Find.
+
 ## Summary
 
-| Technique           | Tasks | Source                          |
-|---------------------|-------|---------------------------------|
-| Two-Pointer         | 5     | All three lists                 |
-| Sliding Window      | 5     | All three lists                 |
-| Binary Search       | 2     | All three lists + personal pick |
-| Hash Map / Hash Set | 1     | Personal pick                   |
-| Stack               | 1     | Personal pick                   |
-| String Manipulation | 1     | Personal pick                   |
-| Sorting & Greedy    | 4     | Personal pick                   |
-| Backtracking        | 3     | All three lists                 |
-| Dynamic Programming | 4     | All three lists + personal pick |
-| **Total**           | **26**|                                 |
+| Technique                | Tasks | Source                          |
+|--------------------------|-------|---------------------------------|
+| Two-Pointer              | 5     | All three lists                 |
+| Sliding Window           | 5     | All three lists                 |
+| Binary Search            | 2     | All three lists + personal pick |
+| Hash Map / Hash Set      | 1     | Personal pick                   |
+| Stack                    | 1     | Personal pick                   |
+| String Manipulation      | 1     | Personal pick                   |
+| Sorting & Greedy         | 4     | Personal pick                   |
+| Backtracking             | 3     | All three lists                 |
+| Dynamic Programming      | 4     | All three lists + personal pick |
+| BFS / DFS — Binary Trees | 5     | All three lists (technique)     |
+| Graphs                   | 5     | All three lists (technique)     |
+| **Total**                | **36**|                                 |
 
 ## Trimmed Personal Picks (and why)
 
@@ -99,8 +121,8 @@
 | Monotonic Array          | Too simple for a standalone interview question          |
 | Move Element to End      | Too simple; covered by the Two-Pointer technique        |
 | Sorted Squared Array     | Too simple; covered by the Two-Pointer technique        |
-| Three Number Sum         | Already covered by **3Sum** in the list                 |
-| Two Number Sum           | Already covered by **Two Sum II** in the list           |
+| Three Number Sum         | Already covered by **Three-Number Sum** in the list     |
+| Two Number Sum           | Already covered by **Two-Number Sum** in the list       |
 | Palindrome Check         | Already covered by **Valid Palindrome** in the list     |
 | Min Coins for Change     | Already covered by **Coin Change** in the list          |
 | Longest Substring        | Already covered in Sliding Window section               |
