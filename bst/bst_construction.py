@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from bst import BST
+from .bst import BST
 
 # The BST property:
 # * All values in the left subtree of a node are less than the node value.
@@ -27,7 +27,7 @@ def construct_bst_as_is(values):
     return bst
 
 
-print(construct_bst_as_is(values))
+# print(construct_bst_as_is(values))
 
 
 # Construct a height-balanced BST from Array:
@@ -35,7 +35,7 @@ print(construct_bst_as_is(values))
 # 2. Build a height-balanced BST by recursively picking
 # the middle element as the root.
 
-array = [5, 8, 3, 10, 9, 25, 1, 4]
+# array = [5, 8, 3, 10, 9, 25, 1, 4]
 
 # Time O(N)
 # Space O(log N): because of recursion stack
@@ -63,5 +63,4 @@ def build(array, left, right):
 
     return node
 
-
-print(construct_bst(array))
+# print(construct_bst(array))
