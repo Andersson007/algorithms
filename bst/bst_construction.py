@@ -6,7 +6,7 @@ from .bst import BST
 # * All values in the left subtree of a node are less than the node value.
 # * All values in the right subtree are greater than the node value.
 
-values = [8, 3, 10, 1, 6, 14, 4, 7, 13]
+# values = [8, 3, 10, 1, 6, 14, 4, 7, 13]
 
 # Result:
 #        8
