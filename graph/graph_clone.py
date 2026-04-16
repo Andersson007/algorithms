@@ -44,9 +44,57 @@ node = node1
 #
 # Output: a deep copy of the input graph
 
+# Solution:
+# The simplest way to think about this problem is:
+# You’re copying a graph that may have cycles, so
+# you must remember what you’ve already copied.
+# Use DFS + a dictionary (hash map):
+# * Key: original node
+# * Value: cloned node
+# Why? If you revisit a node (because of a cycle),
+# you don’t want to clone it again — you just reuse the existing clone.
 
+# DFS (Depth-first Search) is a graph traversal algorithm that
+# explores as far as possible along one branch before backtracking:
+# * Start from a node.
+# * Visit it and mark it as visited.
+# * Recursively (or using a stack) visit one unvisited neighbor at a time.
+# * When no unvisited neighbors remain, backtrack and continue.
+# Time complexity O(V + E): where V is a number of vertices and E is edges
+
+# * Stack → controls DFS traversal
+# * visited → ensures:
+#   * each node is cloned once
+#   * cycles don’t cause infinite loops
+# * Edges are recreated by linking cloned nodes
+
+# Time: O(V + E): you visit each vertex once, for each vertex, you loop
+#   through its neighbors, i.e. through all edges across the graph
+# Space: O(V): we store visited dictionary one entry per vertex +
+#   the stack, that in worst case can hold up to all vertices +
+#   the cloned graph itself = the input graph
 def clone_graph(node):
-    pass
+    if not node:
+        return None
+
+    visited = {}
+    visited[node] = Node(node.val)
+
+    stack = [node]
+
+    while stack:
+        cur_node = stack.pop()
+
+        for neighbor in cur_node.neighbors:
+            if neighbor not in visited:
+                # clone and add to stack
+                visited[neighbor] = Node(neighbor.val)
+                stack.append(neighbor)
+
+            # connect the clone
+            visited[cur_node].neighbors.append(visited[neighbor])
+
+    return visited[node]
 
 
 print_graph(node)
