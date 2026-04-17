@@ -118,3 +118,31 @@ def dfs(node):
             stack.extend(cur_node.neighbors)
 
 dfs(node)
+
+
+# BFS:
+# * Uses a queue (FIFO) instead of stack (LIFO)
+# * Processes nodes livel by level:
+#   * Visit the start node
+#   * Then all its neighbors
+#   * Then neighbors of neighbors, etc.
+# Key idea: go wide first, no deep
+# Time: O(V + E)
+# Space: O(V)
+from collections import deque
+
+def bfs(node):
+    visited = set()
+    queue = deque([node])
+
+    while queue:
+        cur_node = queue.popleft()
+
+        if cur_node not in visited:
+            print(cur_node.val)  # Process the node
+
+            visited.add(cur_node)
+
+            queue.extend(cur_node.neighbors)
+
+bfs(node)
