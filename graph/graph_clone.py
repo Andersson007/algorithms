@@ -99,3 +99,22 @@ def clone_graph(node):
 
 print_graph(node)
 print_graph(clone_graph(node))
+
+# DFS
+# Time: O(V + E)
+# Space: O(V)
+def dfs(node):
+    visited = set()
+    stack = [node]
+
+    while stack:
+        cur_node = stack.pop()  # take last element (LIFO)
+
+        if cur_node not in visited:
+            print(cur_node.val)  # process node
+            visited.add(cur_node)
+
+            # add neighbors to stack
+            stack.extend(cur_node.neighbors)
+
+dfs(node)
