@@ -27,7 +27,7 @@ node = node1
 # You are given a reference to a node in a connected undirected graph.
 # Each node contains:
 # * an integer value val
-# * a list of its neighbors neighbors
+# * a list of its neighbors
 # Your task is to return a deep copy (clone) of the graph.
 # A deep copy means:
 # * You must create entirely new nodes (no shared references with the original graph)
