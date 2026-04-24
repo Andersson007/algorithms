@@ -50,21 +50,25 @@ def num_islands(grid):
     if not grid:
         return 0
 
-    rows, cols = len(grid), len(grid[0])
+    rows = len(grid)
+    cols = len(grid[0])
     count = 0
 
     for r in range(rows):
         for c in range(cols):
+
+            # If it's land
             if grid[r][c] == "1":
                 count += 1
                 stack = [(r, c)]
 
+                # Check neighbors and "sink the whole island"
                 while stack:
                     row, col = stack.pop()
 
-                    # check bounds and if it's land
+                    # Check bounds and if it's land
                     if 0 <= row < rows and 0 <= col < cols and grid[row][col] == "1":
-                        # mark as visited
+                        # Mark as visited
                         grid[row][col] = "0"
 
                         # add neighbors
