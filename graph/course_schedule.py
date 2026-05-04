@@ -2,7 +2,7 @@
 
 # Course Schedule
 # You are given:
-# * An integer numCourses representing the total number of courses labeled from 0 to numCourses - 1
+# * An integer num_courses representing the total number of courses labeled from 0 to num_courses - 1
 # * A list of prerequisites where each pair [a, b] means:
 #   "To take course a, you must first take course b"
 # Task: Determine if it is possible to finish all courses (return True/False).
@@ -13,7 +13,7 @@
 # * If there is a cycle → impossible to finish
 
 # Example 1
-# * numCourses = 2
+# * num_courses = 2
 # * prerequisites = [[1, 0]]
 # Explanation:
 # * To take course 1 → you need course 0
@@ -21,7 +21,7 @@
 # Output: True
 
 # Example 2 (Cycle)
-# # numCourses = 2
+# # num_courses = 2
 # # prerequisites = [[1, 0], [0, 1]]
 # Explanation:
 # * 1 depends on 0
@@ -40,32 +40,32 @@
 # The key trick: If you ever revisit a node in state 1 → cycle detected
 
 # Logic (simple)
-# * indegree[i] = how many prerequisites course "i" still needs
+# * prereq_num[i] = how many prerequisites course "i" still needs
 # * Start with all courses that need none
 # * Each time you “take” a course:
-#   * Reduce indegree of its neighbors
-# * If something never reaches indegree 0 → it’s stuck in a cycle
+#   * Reduce prereq_num of its neighbors
+# * If something never reaches prereq_num 0 → it’s stuck in a cycle
 # Intuition in one line: "Keep removing courses with no dependencies—if something remains, it’s a cycle"
 
 # Time: O(V + E): process each course and each edge once
-# Space: O(V + E): graph gives O(E), indegree array + stack = O(V)
+# Space: O(V + E): graph gives O(E), prereq_num array + stack = O(V)
 def can_finish(num_courses, prereqs):
     # Create adjacency list {course: [list of courses that depend on it}
     graph = {i: [] for i in range(num_courses)}
 
-    indegree = [0] * num_courses  # indegree[i] = number of prerequisites course "i" still needs
+    prereq_num = [0] * num_courses  # prereq_num[i] = number of prerequisites course "i" still needs
 
     # Build the graph:
     # * b -> a (to take a, you must take b)
-    # * Increase indegree of a
+    # * Increase prereq_num of a
     for a, b in prereqs:
         graph[b].append(a)
-        indegree[a] += 1
+        prereq_nume[a] += 1
 
     stack = []  # Stack will store courses with no remaining prerequisites
     # Initialize stack with courses that can be taken immediately
     for i in range(num_courses):
-        if indegree[i] == 0:
+        if prereq_num[i] == 0:
             stack.append(i)
 
     completed = 0  # Count how many courses we successfully “take”
@@ -77,10 +77,10 @@ def can_finish(num_courses, prereqs):
 
         # Look at courses that depend on this one
         for neighbor in graph[course]:
-            indegree[neighbor] -= 1     # Remove this prerequisite (we just completed it)
+            prereq_num[neighbor] -= 1     # Remove this prerequisite (we just completed it)
 
             # If a course now has no prerequisites → it’s ready to take → push to stack
-            if indegree[neighbor] == 0:
+            if prereq_num[neighbor] == 0:
                 stack.append(neighbor)
 
     # Final check: If we completed all courses → no cycle, otherwise a cycle exists
