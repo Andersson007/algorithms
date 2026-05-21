@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # First Duplicate Value.
-# Find and returns the first element in the input array
+# Find and return the first element in the input array
 # of integers from 1 to n inclusive where n is
 # is a length of the array that appear more than once
 # when the array is read from left to right.
@@ -23,13 +23,13 @@ array2 = [1, 2, 3]  # No duplicate values, returns -1
 # Time O(N)
 # Space O(1)
 def first_duplicate_value(array):
-    for val in array:
-        abs_val = abs(val)
-        mapped_idx = abs_val - 1
-        if array[mapped_idx] < 0:
-            return abs_val
+    for i in range(len(array)):
+        idx = array[i] - 1
 
-        array[mapped_idx] *= -1
+        if array[idx] < 0:
+            return array[i]
+
+        array[idx] *= -1
 
     return -1
 
