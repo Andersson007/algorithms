@@ -82,7 +82,8 @@ def smallest_diff_mine(arr1, arr2):
 
     return smallest
 
-
+# * Sorting both arrays → enables linear scan
+# * Two pointers → efficient comparison
 # Time (N log N + M log M)
 # Space O(1)
 def smallest_diff_pair(arr1, arr2):
