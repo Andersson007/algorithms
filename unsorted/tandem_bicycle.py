@@ -5,7 +5,7 @@
 # * Write a function that returns the max possible
 #   total speed or a min possible total speed
 #   of all of the tandem bicycles based on
-#   the "pastest" parameter. If true, returns
+#   the "fastest" parameter. If true, returns
 #   max, otherwise min possible speed.
 # * Total speed is defined as a sum of speeds
 #   of all tandem bicycles.
