@@ -9,12 +9,17 @@ A useful exercise pattern for each task:
 5. Explain the tradeoffs in writing.
 6. Refactor it for readability.
 
+## 0. Tasks to do later for revision
+
+- Write a few closures (e.g. a counter, a specialized function, a decorator manually).
+- Write a function using functools.partial.
+
 ## 1. Language Mechanics & Gotchas
 
-- Write a function with a mutable default argument, observe the bug, and fix it two ways.
-- Write a closure inside a loop that captures a variable incorrectly; fix it with a default argument and with `functools.partial`.
-- Build a nested dict/list structure and demonstrate where `copy.copy` silently shares state vs `copy.deepcopy`.
-- Implement a simplified `@property` from scratch using the descriptor protocol.
+* Write a function with a mutable default argument, observe the bug, and fix it two ways.
+* Write a closure inside a loop that captures a variable incorrectly; fix it with a default argument and with `functools.partial`.
+* Build a nested dict/list structure and demonstrate where `copy.copy` silently shares state vs `copy.deepcopy`.
+* Implement a simplified `@property` from scratch using the descriptor protocol.
 - Create a diamond inheritance hierarchy and predict/verify the MRO; override one method and trace the call chain.
 - Write a decorator that preserves the wrapped function's signature and metadata using `functools.wraps`, then test it with `inspect.signature`.
 - Build a class that uses `__slots__` and measure the memory difference vs a regular class with 100k instances.
