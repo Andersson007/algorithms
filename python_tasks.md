@@ -20,7 +20,7 @@ A useful exercise pattern for each task:
 * Write a closure inside a loop that captures a variable incorrectly; fix it with a default argument and with `functools.partial`.
 * Build a nested dict/list structure and demonstrate where `copy.copy` silently shares state vs `copy.deepcopy`.
 * Implement a simplified `@property` from scratch using the descriptor protocol.
-- Create a diamond inheritance hierarchy and predict/verify the MRO; override one method and trace the call chain.
+* Create a diamond inheritance hierarchy and predict/verify the MRO; override one method and trace the call chain.
 - Write a decorator that preserves the wrapped function's signature and metadata using `functools.wraps`, then test it with `inspect.signature`.
 - Build a class that uses `__slots__` and measure the memory difference vs a regular class with 100k instances.
 - Create a set of objects with a custom `__hash__`/`__eq__`; demonstrate what breaks when a mutable field changes after insertion.
