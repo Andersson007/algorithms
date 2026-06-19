@@ -18,7 +18,7 @@ A useful exercise pattern for each task:
 * Create a diamond inheritance hierarchy and predict/verify the MRO; override one method and trace the call chain.
 * Write a decorator that preserves the wrapped function's signature and metadata using `functools.wraps`, then test it with `inspect.signature`.
 * Write decorators for caching and logging, use functools.wraps and inspect.signature, print functions' matadata.
-- Build a class that uses `__slots__` and measure the memory difference vs a regular class with 100k instances.
+* Build a class that uses `__slots__` and measure the memory difference vs a regular class with 100k instances.
 - Create a set of objects with a custom `__hash__`/`__eq__`; demonstrate what breaks when a mutable field changes after insertion.
 - Write code that triggers LEGB scoping confusion (`UnboundLocalError` from a variable that "exists"), then fix it.
 - Demonstrate identity vs equality: find cases where `is` gives `True` unexpectedly (int caching, string interning) and where `==` gives `True` but `is` does not.

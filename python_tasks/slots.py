@@ -3,15 +3,16 @@
 # difference vs a regular class with 100k instances.
 
 # __slots__ is a class attribute that tells Python
-# which instance attributes are allowed and lets Python store them more efficiently.
-# Without __slots__, each object has a __dict__ to hold attributes
+# 1) which instance attributes are allowed and
+# 2) lets Python store them more efficiently.
+# Without __slots__, each object has a __dict__ to hold attributes.
 
 # Main takeways:
 # * Regular objects store attributes in a per-instance dictionary.
 # * __slots__ removes that dictionary (in most cases).
 # * This can save a lot of memory when you create many instances.
 # * The benefit becomes noticeable at large scales (like 100k+ objects).
-# * Install and use pympler.asizeof() for getting accurate memory
+# * Install pympler and use asizeof.asizeof for getting accurate memory
 #     usage including referenced objects.
 
 # Use __slots__ when:

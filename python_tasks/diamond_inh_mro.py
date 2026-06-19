@@ -32,6 +32,9 @@
 # in each class.
 # When you call d.foo() observe the order.
 
+# An important takeway: MRO in Python is a single liniar order
+#   which prevents classes from being called twice.
+
 class A():
     def foo(self):
         print("A")

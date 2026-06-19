@@ -25,6 +25,10 @@ durations = [3, 2, 1, 5, 4]
 # * In [1, 6], the first waits 0, the second waits 1,
 #   so 0 + 1 = 1
 
+# Best explanation:
+# [3, 2, 1] -> 0 + 3 + (3 + 2) = 8
+# [1, 2, 3] -> 0 + 1 + (1 + 2) = 4
+
 # Time: O(n log n) as we sort
 # Space: O(1) as we don't take extra space
 def min_waiting_time(durations):
@@ -40,7 +44,7 @@ def min_waiting_time(durations):
 
 
 # Option 2
-# Long queries delay many future queries..
+# Long queries delay many future queries.
 # Short queries delay fewer future queries.
 # Always execute the query with the smallest
 # duration next.
@@ -54,6 +58,10 @@ def min_waiting_time(durations):
 
 # “I sort the queries from shortest to longest,
 # then accumulate how long each query waits behind the ones before it.”
+# Best explanation:
+# [3, 2, 1] -> 0 + 3 + (3 + 2) = 8
+# [1, 2, 3] -> 0 + 1 + (1 + 2) = 4
+
 # Time O(N log N)
 # Space O(1)
 def min_wait_time(queries):
