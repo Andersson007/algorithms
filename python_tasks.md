@@ -46,6 +46,7 @@ A useful exercise pattern for each task:
 * Demonstrate identity vs equality: find cases where `is` gives `True` unexpectedly (int caching, string interning) and where `==` gives `True` but `is` does not.
 * Create a set of objects with a custom `__hash__`/`__eq__`; demonstrate what breaks when a mutable field changes after insertion.
 - Write code that triggers LEGB scoping confusion (`UnboundLocalError` from a variable that "exists"), then fix it.
+- Use a frozen dataclass to create a class that is primarily data. Think of use casesof frozen and non-frozen dataclasses.
 
 ## 2. Iterators, Generators & Functional Patterns
 
