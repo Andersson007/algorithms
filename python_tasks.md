@@ -9,6 +9,30 @@ A useful exercise pattern for each task:
 5. Explain the tradeoffs in writing.
 6. Refactor it for readability.
 
+## Questions to answer after finishing the tasks
+
+- What is a closure?
+- What is a decorator? Name common use cases.
+- What is a higher-order function?
+- What is function metadata? Name common metadata attributes.
+- What is functools.wraps for?
+- What is introspection?
+- What is MRO? How it works in Python and why?
+- What is the @property descriptor for?
+- What are the __hash__ and __eq__ methods for?
+
+## Tasks to solve for revision after finishing the tasks below
+
+- Write a closure.
+- Write a func using functools.partial.
+- Use copy.copy and copy.deepcopy with nested DSs. Compare their values and determine if the underlying objects are the same.
+- Write an example of using the @property descriptor.
+- Create a diamond inheritance hierarchy and predict/verify the MRO.
+- Write decorators for logging and caching that preserve the wrapped functions signature and metadata, then check its signature with the inspect module.
+- Measure mem footprint of 100k objects with __slots__ vs w/o __slots__.
+- Demonstrate objects equality vs identity.
+- Create a set of objects with a custom __hash__ and __eq__ methods. Make an attribute used for __hash__ immutable.
+
 ## 1. Language Mechanics & Gotchas
 
 * Write a function with a mutable default argument, observe the bug, and fix it two ways.
@@ -20,7 +44,7 @@ A useful exercise pattern for each task:
 * Write decorators for caching and logging, use functools.wraps and inspect.signature, print functions' matadata.
 * Build a class that uses `__slots__` and measure the memory difference vs a regular class with 100k instances.
 * Demonstrate identity vs equality: find cases where `is` gives `True` unexpectedly (int caching, string interning) and where `==` gives `True` but `is` does not.
-- Create a set of objects with a custom `__hash__`/`__eq__`; demonstrate what breaks when a mutable field changes after insertion.
+* Create a set of objects with a custom `__hash__`/`__eq__`; demonstrate what breaks when a mutable field changes after insertion.
 - Write code that triggers LEGB scoping confusion (`UnboundLocalError` from a variable that "exists"), then fix it.
 
 ## 2. Iterators, Generators & Functional Patterns
