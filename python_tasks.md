@@ -20,6 +20,7 @@ A useful exercise pattern for each task:
 - What is MRO? How it works in Python and why?
 - What is the @property descriptor for?
 - What are the __hash__ and __eq__ methods for?
+- What are LEGB scoping rules? How does it affect variables inside functions?
 
 ## Tasks to solve for revision after finishing the tasks below
 
@@ -32,6 +33,7 @@ A useful exercise pattern for each task:
 - Measure mem footprint of 100k objects with __slots__ vs w/o __slots__.
 - Demonstrate objects equality vs identity.
 - Create a set of objects with a custom __hash__ and __eq__ methods. Make an attribute used for __hash__ immutable.
+- Write two samples of code that triggers LEGB scoping confusion; fix them.
 
 ## 1. Language Mechanics & Gotchas
 
@@ -45,7 +47,7 @@ A useful exercise pattern for each task:
 * Build a class that uses `__slots__` and measure the memory difference vs a regular class with 100k instances.
 * Demonstrate identity vs equality: find cases where `is` gives `True` unexpectedly (int caching, string interning) and where `==` gives `True` but `is` does not.
 * Create a set of objects with a custom `__hash__`/`__eq__`; demonstrate what breaks when a mutable field changes after insertion.
-- Write code that triggers LEGB scoping confusion (`UnboundLocalError` from a variable that "exists"), then fix it.
+* Write code that triggers LEGB scoping confusion (`UnboundLocalError` from a variable that "exists"), then fix it.
 - Use a frozen dataclass to create a class that is primarily data. Think of use casesof frozen and non-frozen dataclasses.
 
 ## 2. Iterators, Generators & Functional Patterns
