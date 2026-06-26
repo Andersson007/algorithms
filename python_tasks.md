@@ -21,6 +21,8 @@ A useful exercise pattern for each task:
 - What is the @property descriptor for?
 - What are the __hash__ and __eq__ methods for?
 - What are LEGB scoping rules? How does it affect variables inside functions?
+- What is the __repr__ method for? How is it different from __str__?
+- What are dataclasses for (frozen, non-frozen)? Benefits compared to regular classes?
 
 ## Tasks to solve for revision after finishing the tasks below
 
@@ -34,6 +36,8 @@ A useful exercise pattern for each task:
 - Demonstrate objects equality vs identity.
 - Create a set of objects with a custom __hash__ and __eq__ methods. Make an attribute used for __hash__ immutable.
 - Write two samples of code that triggers LEGB scoping confusion; fix them.
+- Write example of classes that use the __repr__ and __str__ methods.
+- Write a dataclass and a frozen dataclass, call their __repr__ and __str__ methods.
 
 ## 1. Language Mechanics & Gotchas
 
