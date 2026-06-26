@@ -1,5 +1,13 @@
 # Reliable Programming Interview Tasks
 
+- The algorithmic techniques (the section titles below) are explained in [techniques.md](./techniques.md).
+- The solution files are located in subdirectories under [./programming_tasks/](./programming_tasks/).
+
+To execute a specific Python file, run:
+```
+python -m programming_tasks.SUBDIR.filename_without_extension
+```
+
 ## 1. Two-Pointer Technique
 
 *Scan from both ends or maintain two moving indices. Ideal for sorted arrays and strings.*
