@@ -23,6 +23,7 @@ A useful exercise pattern for each task:
 - What are LEGB scoping rules? How does it affect variables inside functions?
 - What is the __repr__ method for? How is it different from __str__?
 - What are dataclasses for (frozen, non-frozen)? Benefits compared to regular classes?
+- What is a generator? What is the next() function for? What is "lazy" evaluation?
 
 ## Tasks to solve for revision after finishing the tasks below
 
@@ -38,6 +39,7 @@ A useful exercise pattern for each task:
 - Write two samples of code that triggers LEGB scoping confusion; fix them.
 - Write example of classes that use the __repr__ and __str__ methods.
 - Write a dataclass and a frozen dataclass, call their __repr__ and __str__ methods.
+- Write generators: one that generates numbers and another one that reads a file, parses and returns lines one by one. Call it in a loop and manually.
 
 ## 1. Language Mechanics & Gotchas
 
@@ -56,7 +58,7 @@ A useful exercise pattern for each task:
 
 ## 2. Iterators, Generators & Functional Patterns
 
-- Write a generator that reads a 1GB+ file and yields parsed records without loading the file into memory.
+* Write a generator that reads a 1GB+ file and yields parsed records without loading the file into memory.
 - Implement `itertools.groupby` from scratch and handle the "must be pre-sorted" gotcha.
 - Build a pipeline of three generators chained together (filter, transform, aggregate) and measure peak memory vs the equivalent list approach.
 - Write a generator that supports `.send()` to dynamically change its behavior mid-iteration.
