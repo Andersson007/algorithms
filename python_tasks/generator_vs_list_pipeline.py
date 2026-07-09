@@ -51,6 +51,8 @@ numbers = range(1_000_000)
 tracemalloc.start()
 
 result = total(square(filter_even(numbers)))
+# In real life, this specific problem solution should look like:
+# result = sum(n * n for n in numbers if n % 2 == 0)
 
 current, peak = tracemalloc.get_traced_memory()
 print(f"Peak memory: {peak / 1024 / 1024:.2f} MB")

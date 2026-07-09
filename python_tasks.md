@@ -26,6 +26,7 @@ A useful exercise pattern for each task:
 - What is a generator? What is the next() function for? What is "lazy" evaluation?
 - What is an iterable, iterator, iter(), next(), itertools.groupby, generator vs iterator relationship?
 - How to measure current and peack memory usage?
+- What is .send() in generators for?
 
 ## Tasks to solve for revision after finishing the tasks below
 
@@ -44,6 +45,7 @@ A useful exercise pattern for each task:
 - Write generators: one that generates numbers and another one that reads a file, parses and returns lines one by one. Call it in a loop and manually.
 - Implement a simplified version of `itertools.groupby` from scratch.
 - Build a pipeline of three generators chained together (filter, transform, aggregate) and measure peak memory vs the equivalent list approach.
+- Writhe a generator that keeps track of all numbers sent to it and returns the current average (use .send()).
 
 ## 1. Language Mechanics & Gotchas
 
