@@ -67,7 +67,7 @@ A useful exercise pattern for each task:
 * Write a generator that reads a 1GB+ file and yields parsed records without loading the file into memory.
 * Implement `itertools.groupby` from scratch and handle the "must be pre-sorted" gotcha.
 * Build a pipeline of three generators chained together (filter, transform, aggregate) and measure peak memory vs the equivalent list approach.
-- Write a generator that supports `.send()` to dynamically change its behavior mid-iteration.
+* Write a generator that supports `.send()` to dynamically change its behavior mid-iteration.
 - Implement a lazy `flatten()` that handles arbitrarily nested iterables without recursion (use an explicit stack).
 - Use `itertools.islice`, `chain`, and `tee` to solve a sliding-window aggregation without materializing the data.
 - Build a custom iterable class that supports `__iter__` and `__next__`, then refactor it to a generator function and compare readability.
