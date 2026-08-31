@@ -35,6 +35,8 @@ def num_ways_make_change(target_amount, coins):
                 # We calculate the potential new minimum:
                 # 1 (for the current coin) + the stored
                 # minimum for the remainder.
+                # The key idea is: choose one coin now, and then solve the
+                # remaining amount using the answer we already calculated.
                 new_min = 1 + nums_of_coins[amount - coin]
 
                 # Update nums_of_coins[amount] if this path is better than
