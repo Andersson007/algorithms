@@ -18,7 +18,7 @@ coins = [1, 2, 5]
 # Time O(nd): where n is the target amount
 #   and d is the number of coin denominations.
 # Space O(n)
-def num_ways_make_change(target_amount, coins):
+def min_coins_for_change(coins, target_amount):
     # Create an array to store the minimum coins
     # for each amount from 0 to 'amount'.
     # We initialize it with a value larger than any possible solution.
@@ -49,4 +49,4 @@ def num_ways_make_change(target_amount, coins):
     return result if result != float('inf') else -1
 
 
-print(num_ways_make_change(target_amount, coins))
+print(min_coins_for_change(target_amount, coins))
