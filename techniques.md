@@ -60,3 +60,26 @@ Key characteristics:
 In short: Dynamic programming means solve smaller problems once, remember their answers, and reuse them to efficiently solve the bigger problem.
 
 Examples of classic programming tasks that use the DP technique: Longest common subsequence, Climbing stairs, Minimum coins for change, number of ways to make change.
+
+
+## Sliding window
+
+Sliding Window is an algorithmic technique for efficiently processing contiguous portions of a sequence, such as an array or string.
+
+Instead of repeatedly examining every possible range from scratch, you maintain a window over part of the sequence and move it step by step.
+
+General idea:
+1. Start with a window covering part of the sequence.
+2. Keep track of relevant information about the elements inside it (such as a sum or count).
+3. Move the window by adding new elements and removing elements that are no longer inside it.
+4. Update the result as the window changes.
+
+This help us avoid recalculating the entire window.
+
+Common use cases:
+* Finding maximum/minimum values in subarrays
+* Finding the longest substring meeting a condition
+* Calculating sums or averages over ranges
+* Finding unique elements within a range
+
+In short: Sliding window efficiently processes contiguous ranges by reusing information as the range moves, often reducing a brute-force solution from quadratic time to linear time.

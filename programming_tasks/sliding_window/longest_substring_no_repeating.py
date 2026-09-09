@@ -57,3 +57,37 @@ def longest_substring_no_repeat2(string):
     return max_length
 
 print(longest_substring_no_repeat2(string))
+
+
+def longest_substring_no_repeating3(string):
+    # This dict stores the last seen index of each char
+    seen = {}
+    max_length = 0
+    start, end = 0, 1
+
+    while end < len(string):
+        curr_char = string[end]
+
+        # Check if we've seen this char before AND
+        # if its last position is within current window
+        if curr_char in seen and seen[curr_char] >= start:
+            # If so, we have a repeat.
+            # Shrink the window by moving 'start'
+            # to the position right after the last repeat
+            start = seen[curr_char] + 1
+
+        # Update the last seen position of the curr char
+        seen[curr_char] = end
+
+        # Calculate the current window's length
+        # and update max_length if it's bigger
+        curr_length = end - start + 1
+        max_length = max(max_length, curr_length)
+
+        # Expand the window
+        end += 1
+
+    return max_length
+
+
+print(longest_substring_no_repeating3(string))
