@@ -31,6 +31,14 @@
 * Connect an existing running container to another network
 * Inspect container network settings
 * Ping one container from inside another container
+* List port mapping for a container / for all containers
+* See how the container was exactly created in CLI
+
+* What are the layers
+* How registries and your local system store images
+* How to print env vars inside a container
+* How to copy a file from your system to a container
+* How to copy a file from a container to your system
 
 
 ## Info
@@ -108,4 +116,17 @@ $ podman inspect <container> | jq .[].NetworkSettings.Networks
 $ podman network connect <net> <container>
 
 $ podman exec <container> ping <ip|dns>
+
+$ podman port <container>
+$ podman port --all
+
+$ podman inspect <container> | less     # Search for CreateCommand
+```
+
+## Accessing containers
+
+```
+$ podman exec <container> env
+
+$ podman cp <SRC> <DST>     # podman cp local.txt web3:/tmp/local.txt
 ```
