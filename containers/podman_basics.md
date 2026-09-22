@@ -40,6 +40,8 @@
 * How to copy a file from your system to a container
 * How to copy a file from a container to your system
 
+* How to stop a container when it doesn't respond to podman stop
+* How to restart a container with one command
 
 ## Info
 
@@ -130,3 +132,13 @@ $ podman exec <container> env
 
 $ podman cp <SRC> <DST>     # podman cp local.txt web3:/tmp/local.txt
 ```
+
+## Managing the container lifecycle
+
+```
+$ podman kill <container>  # when it doesn't respond to podman stop
+
+$ podman restart <container>
+```
+
+
