@@ -43,6 +43,13 @@
 * How to stop a container when it doesn't respond to podman stop
 * How to restart a container with one command
 
+* What you typically have in your Container file
+* What is your system-wide container registries conf file
+* What is your personal container registries conf file, it's location
+* How to get info about the file
+* How to see image metadata. What you should look for
+* How to copy an image from one registry to another
+
 ## Info
 
 ```
@@ -141,4 +148,19 @@ $ podman kill <container>  # when it doesn't respond to podman stop
 $ podman restart <container>
 ```
 
+## Container images
 
+```
+$ sudo vim /etc/containers/registries.conf
+
+$ mkdir -p ~/.config/containers
+$ vim ~/.config/containers/registries.conf
+
+$ man containers-registries.conf
+
+$ podman inspect <registry/repo/image:tag> | less   # Search for "Config"
+$ skopeo inspect docker://<registry/repo/image:tag>
+
+# Copy an image from one registry to another
+$ skopeo copy --dest-tls-verify=false <SRC> <DST>
+```
