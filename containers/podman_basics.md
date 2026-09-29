@@ -45,10 +45,33 @@
 
 * What you typically have in your Container file
 * What is your system-wide container registries conf file
-* What is your personal container registries conf file, it's location
-* How to get info about the file
-* How to see image metadata. What you should look for
-* How to copy an image from one registry to another
+
+** What is your personal container registries conf file, it's location
+** How to get info about the file
+** How to see image metadata. What you should look for
+** How to copy an image from one registry to another
+
+* How to build a container
+* Most basic Containerfile content
+* Add a tag (== a new name) to a container
+** What is the typical name format
+* Push it to a registry
+* How to see an image entry point
+** How to check pip, rpm, and apt packages installed to an image
+* How to save/load image to/from a tar file
+
+* See Containerfile instructions man page
+* What do the following instructions do: FROM, RUN, COPY, LABEL,
+  VOLUME, ENV, WORKDIR, EXPOSE USER, ENTRYPOINT
+* How to install anything using dnf w/o it asking for confirmation
+* How to grant non-root filesystem permissions to run files
+
+* skopeo command information (2 ways)
+* How to copy files from URLs or unpack tar archives in the destination image in Containerfile
+* How to change a working directory during image build
+* How to copy everything from the current directory to a current directory inside an image.
+  You should change your location inside the image first
+
 
 ## Info
 
@@ -163,4 +186,48 @@ $ skopeo inspect docker://<registry/repo/image:tag>
 
 # Copy an image from one registry to another
 $ skopeo copy --dest-tls-verify=false <SRC> <DST>
+```
+
+## Managing Images
+
+```
+$ podman build -f Containerfile -t <registry:port/nspace/imgname:tag>
+
+$ podman tag <ID/name> <another-name:tag>
+
+$ podman push <registry:port/nspace/imgname:tag>
+
+$ podman inspect <img>   # To see entry point, look for Config > Cmd
+
+# To see installed packages:
+$ podman run --rm <img> python3 -m pip list
+$ podman run --rm <img> rpm -qa
+$ podman run --rm <img> apt list --installed
+
+# To save/load an image to/from a file
+$ podman save -o <file>.tar <img-name>
+$ podman load -i <file>.tar
+```
+
+The most basic Containerfile
+```
+FROM <base-image>
+CMD <any command>
+```
+
+## Custom Container Images
+
+```
+# These instructions prepare the container to run Apache HTTP Server
+# securely as a non-root user by making specific system directories
+# writable by any user belonging to the root group (GID 0).
+# 1. chgrp -R: Recursively changes the group ownership of the specified directories and their contents.
+# 2. g=u: Copies the owner’s (u-ser) permissions to the g-roup permissions.
+
+RUN dnf install -y httpd && \
+    dnf clean all && \
+    chgrp -R 0 /var/log/httpd /var/run/httpd && \
+    chmod -R g=u /var/log/httpd /var/run/httpd
+
+USER 1001
 ```

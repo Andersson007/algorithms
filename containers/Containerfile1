@@ -1,0 +1,14 @@
+FROM quay.io/fedora/nodejs-22-minimal
+
+ENV SERVER_PORT=3000
+ENV NODE_ENV="production"
+
+EXPOSE $SERVER_PORT
+
+WORKDIR /opt/app-root/src
+
+COPY . .
+
+RUN npm install
+
+CMD npm start
