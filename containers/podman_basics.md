@@ -71,7 +71,26 @@
 * How to change a working directory during image build
 * How to copy everything from the current directory to a current directory inside an image.
   You should change your location inside the image first
-
+
+* What is multistage build
+* What directives do you have to use in Containerfile
+
+* What is /etc/subuid file for
+* How to see your user ID inside a container (2 ways: not yet running, running)
+* How to see local system-container users mapping
+* How to see user ID in an image
+
+* How to see image layers
+* How to mount a directory to a container, what is super important option
+* How to see the SELinux context
+* How to create a voulume
+* How to see available volumes
+* How to inspect a volume
+* How to import tar to a volume
+* How to set permissions on a volume to a user inside a container:
+  * Check the current permissions for podman users
+  * Get user ID inside a container
+  * Give permissions
 
 ## Info
 
@@ -230,4 +249,84 @@ RUN dnf install -y httpd && \
     chmod -R g=u /var/log/httpd /var/run/httpd
 
 USER 1001
+```
+
+## Mustistage builds
+
+```
+# Stage 1
+FROM registry.access.redhat.com/ubi8/nodejs-16 AS builder
+
+USER root
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+# Stage 2
+FROM registry.access.redhat.com/ubi8/nodejs-16
+
+WORKDIR /app
+USER default
+
+COPY --from=builder --chown=default /app/app.js /dst/app.js
+
+CMD node ./app.js
+```
+
+## Rootless podman
+
+```
+$ podman run --rm <img> id      # To see your UID inside a container
+$ podman exec <cont> id         # Same but in a running container
+
+$ podman top <cont> huid uid    # To see the mapping user between your system and container
+
+$ podman inspect <img> | less   # Look for User
+```
+
+## Persistent data
+
+```
+$ podman image tree <img>   # To see layers
+```
+
+Run with a volume:
+```
+$ podman run ... -v /host/path:/cont/path:Z ...
+```
+
+Volumes:
+```
+$ podman volume ls
+
+$ podman volume create <vname>
+
+$ podman volume inspect <vname>
+
+$ podman run ... -v <volume>:/cont/path:Z ...
+
+$ podman volume import <vname> <file.tar>
+```
+
+Give host fs permissions for a user inside a container
+```
+$ podman unshare ls -ld <dir>   # See current permissions
+
+$ podman run --rm <img> id      # Get UID
+
+$ podman unshare chown -R uid:gid <dir>
+$ podman unshare chgrp -R gid <dir>         # Alternatively, to change group ownership only
+```
+
+## Working with databases
+
+```
+$ podman run -d --rm --name <name> -v ~/dbdata:/var/lib/mysql/data:Z -p 3306:3306 -e MYSQL_USER="mysql" -e ... -e ... <img>
+
+$ podman cp dump.sql <container>:/path
+$ podman exec -it <container> sh
+# mysql -h127.0.0.1 -u<user> -p<pass> <db> < dump.sql  # You can run it from your host system too
 ```

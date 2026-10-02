@@ -1,0 +1,19 @@
+# Stage 1
+FROM registry.access.redhat.com/ubi8/nodejs-16 AS builder
+
+USER root
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+# Stage 2
+FROM registry.access.redhat.com/ubi8/nodejs-16
+
+WORKDIR /app
+
+COPY --from=builder /app/app.js .
+
+CMD node ./app.js
