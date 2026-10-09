@@ -46,18 +46,18 @@
 * What you typically have in your Container file
 * What is your system-wide container registries conf file
 
-** What is your personal container registries conf file, it's location
-** How to get info about the file
-** How to see image metadata. What you should look for
-** How to copy an image from one registry to another
+* What is your personal container registries conf file, it's location
+* How to get info about the file
+* How to see image metadata. What you should look for
+* How to copy an image from one registry to another
 
 * How to build a container
 * Most basic Containerfile content
 * Add a tag (== a new name) to a container
-** What is the typical name format
+* What is the typical name format
 * Push it to a registry
 * How to see an image entry point
-** How to check pip, rpm, and apt packages installed to an image
+* How to check pip, rpm, and apt packages installed to an image
 * How to save/load image to/from a tar file
 
 * See Containerfile instructions man page
@@ -74,6 +74,15 @@
 
 * What is multistage build
 * What directives do you have to use in Containerfile
+```
+FROM registry.access.redhat.com/ubi8/nodejs-16 AS builder
+...
+# Stage 2
+FROM registry.access.redhat.com/ubi8/nodejs-16
+...
+COPY --from=builder --chown=<user> /src/file /dst/file
+...
+```
 
 * What is /etc/subuid file for
 * How to see your user ID inside a container (2 ways: not yet running, running)
@@ -91,6 +100,11 @@
   * Check the current permissions for podman users
   * Get user ID inside a container
   * Give permissions
+
+* podman-compose:
+  * How to see man pages for compose.yaml
+  * What are the top level fields in the compose.yaml
+  * What are the fields for "services"
 
 ## Info
 
@@ -329,4 +343,44 @@ $ podman run -d --rm --name <name> -v ~/dbdata:/var/lib/mysql/data:Z -p 3306:330
 $ podman cp dump.sql <container>:/path
 $ podman exec -it <container> sh
 # mysql -h127.0.0.1 -u<user> -p<pass> <db> < dump.sql  # You can run it from your host system too
+```
+
+## Podman compose
+
+```
+services:
+  frontend:
+    container_name: frontend
+    image: quay.io/example/frontend
+    networks:
+      - app-net
+    ports:
+      - "8082:8080"
+  backend:
+    container_name: backend
+    image: quay.io/example/backend
+    networks:
+      - app-net
+      - db-net
+  db:
+    container_name: db
+    image: registry.redhat.io/rhel8/postgresql-13
+    environment:
+      POSTGRESQL_ADMIN_PASSWORD: redhat
+    networks:
+      - db-net
+    volumes:
+      - my-volume:/var/lib/postgresql/data
+
+networks:
+  app-net: {}
+  db-net: {}
+
+volumes:
+  my-volume:
+    external: true
+```
+
+```
+$ podman-compose up -d | down
 ```
