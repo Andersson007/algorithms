@@ -18,8 +18,7 @@
 
 12. **Principle of Least Privilege** (PoLP)
 13. **Inversion of Control** (IoC)
-14. **GRASP** (General Responsibility Assignment Software Patterns)
-15. **Atomic Commits**
+14. **Atomic Commits**
 
 ---
 
@@ -28,8 +27,8 @@
 ### 1. KISS (Keep It Simple, Stupid)
 
 - Favor the simplest solution that works; complexity is a cost, not a feature.
-- Avoid clever tricks, deep abstractions, or multi-layered indirection when a straightforward approach will do.
-- Simple code is easier to read, test, debug, and hand off.
+- Avoid clever tricks, deep abstractions, etc. when a straightforward approach will do the job.
+- Simple code is easier to read, test, debug, and maintaint.
 
 **Problem:** A developer writes a config parser that uses metaprogramming, dynamic dispatch, and a plugin registry to load a YAML file with five keys.
 
@@ -39,9 +38,7 @@
 
 ### 2. DRY (Don't Repeat Yourself)
 
-- Every piece of knowledge should have a single, authoritative representation in the system.
-- Applies to logic, data schemas, configuration, and documentation — not just code.
-- Duplicated logic means duplicated bugs and divergent behavior over time.
+- Every entity in the project (logic, code, configuration, documentation) should have a single representation in the system.
 
 **Problem:** Validation rules for a user's email are copy-pasted into the registration endpoint, the profile-update endpoint, and the admin panel. A new requirement (allow `+` aliases) is fixed in one place but missed in the other two.
 
@@ -51,9 +48,8 @@
 
 ### 3. YAGNI (You Aren't Gonna Need It)
 
-- Don't build features, abstractions, or extension points until there is a concrete, present need.
+- Don't add features or change anything until there's a concrete present need.
 - Speculative code adds maintenance burden and is often wrong when the real requirement arrives.
-- Scope decisions to what you know today, not what you imagine tomorrow.
 
 **Problem:** A team builds a notification service that supports email, SMS, push, Slack, and carrier pigeon — but the product only sends emails today. The SMS and push modules sit untouched for two years, then need a full rewrite when the real requirements emerge.
 
@@ -203,30 +199,18 @@
 
 ### 13. Inversion of Control (IoC)
 
-- The framework/container calls your code, not the other way around.
-- Your components declare what they need; the runtime decides when and how to provide it.
-- Decouples component lifecycle management from business logic.
-- Dependency Injection is one way to achieve IoC — other forms include the template method pattern and event/callback-driven frameworks.
+Inversion of Control (IoC) means: Instead of your code controlling when and how other components are called, an external framework or component controls that flow.
 
-**Problem:** A service manually instantiates its logger, database connection, cache client, and message queue in its constructor. Testing requires all of these to be real or carefully monkey-patched.
+- Without IoC: Your code creates and calls everything it needs.
+- With IoC: You provide the components or rules, and a framework decides when to call them.
 
-**Applying IoC:** Use a DI container or framework. The service declares its dependencies via constructor parameters. The container wires them at startup; tests inject mocks or fakes with no patching needed.
-
----
-
-### 14. GRASP (General Responsibility Assignment Software Patterns)
-
-- A set of guidelines for assigning responsibilities to classes: Creator, Information Expert, Low Coupling, High Cohesion, Controller, Polymorphism, Pure Fabrication, Indirection, Protected Variations.
-- Helps answer "which class should own this behavior?" in object-oriented design.
-- Focuses on keeping coupling low and cohesion high.
-
-**Problem:** A team can't decide whether order-total calculation belongs in `Order`, `OrderService`, `PricingEngine`, or `CartController`. Logic ends up scattered across all four, with subtle inconsistencies.
-
-**Applying GRASP (Information Expert):** The `Order` class has all the line items, discounts, and tax info — it is the information expert. Place `calculate_total()` on `Order`. Other classes delegate to it rather than recalculating.
+Simple example: In a web framework, you don't write main() that waits for HTTP requests and calls your functions.
+You simply define a function like handleRequest(), and the framework calls it when a request arrives.
+In short: “Don’t call us; we’ll call you.”
 
 ---
 
-### 15. Atomic Commits
+### 14. Atomic Commits
 
 - Each commit should contain exactly one logical change — a single bug fix, a single feature, or a single refactor.
 - Don't mix unrelated changes (e.g., a feature + a style fix + a rename) in the same commit.
