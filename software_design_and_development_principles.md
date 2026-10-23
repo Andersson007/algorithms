@@ -139,9 +139,10 @@
 
 ### 8. Law of Demeter (LoD)
 
+- Avoid reaching deep internals of objects through long chains like `order.customer.address.city.zip_code`,
+  instead define and use something like `order.get_zip_code()`.
 - An object should only talk to its immediate collaborators, not reach through them to their internals.
-- Avoid long chains like `order.customer.address.city.zip_code`.
-- Reduces coupling — if the internal structure changes, only the immediate owner needs updating.
+- Why:Reduces coupling — if the internal structure changes, only the immediate owner needs updating.
 
 **Problem:** A shipping module accesses `order.customer.address.city` directly. When `Address` is refactored to split into `shipping_address` and `billing_address`, every caller across the codebase breaks.
 
@@ -165,7 +166,7 @@
 
 - Provide sensible defaults so that developers only need to specify unconventional aspects.
 - Reduces boilerplate and decision fatigue for standard cases.
-- The convention should be overridable when needed, but the default should cover 80%+ of use cases.
+- The default should cover 80%+ of use cases.
 
 **Problem:** A web framework requires 200 lines of XML to map a `UserController` to `/users`, specify the view directory, declare the model binding, and configure the serializer — all of which follow the same predictable pattern.
 
@@ -175,13 +176,12 @@
 
 ### 11. Occam's Razor
 
-- When multiple solutions work, prefer the one with the fewest assumptions and moving parts.
-- Complexity must justify itself — simpler explanations and designs are more likely correct.
+- Always start with simpler explanations and solutions. Complexity must justify itself.
 - Applies to debugging (simplest hypothesis first) and architecture (simplest design that meets requirements).
 
-**Problem:** A service intermittently returns stale data. The team suspects a distributed cache race condition and begins designing a cache-invalidation protocol with versioned keys and pub/sub.
+**Problem:** After yesterday's deployment of a new version of the app, it looks like this morning the app doesn't get data from the database.
 
-**Applying Occam's Razor:** Check the simple things first. The TTL was set to 24 hours instead of 5 minutes due to a config typo. Fix the config, problem solved — no new infrastructure needed.
+**Applying Occam's Razor:** Don't rush to debug the deployed code. Check your database and app logs first, maybe there's an infrastucture or configuration issue.
 
 ---
 
