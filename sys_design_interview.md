@@ -15,6 +15,13 @@ Questions:
 * Adding loggin, monitoring, automation
 * Summarize how to scale your system to support millions of users
 
+* Latency-related conclusions
+* Availability-related notions
+
+* What is interviewers look for in a sys design interview from a good candidate
+* What are red flags for them
+* What is step 1 for you
+* Give good questions examples
 
 ## Types of scaling
 
@@ -93,4 +100,51 @@ sharding separates large DBs into smaller, more easily managed parts called shar
 - Scale your data tier
 - Log and monitor your systems, use automation
 
+## Latency-related conclusions
 
+- Memory is fast, disk is slow
+- Avoid disc seeks if possible
+- Simple compression algorithms are fast
+- Compress data vefore sending it over the internet if possible
+- It takes time to send data between DCs
+
+## Availability-related notions
+
+* Hight availability is the ability of a system to be continuously operational for a desirably long period of time.
+  It is measured as a percentage: 100% HA means a system has 0 downtime.
+
+* SLA (a service level agreement) is a commonly used term for service providers.
+  It defines the level of uptime your service will deliver to your customers.
+  - 99.9% is common. Uptime is traditionally measured in nines,
+    e.g. 99.999% = 5.26 min/year.
+
+## Framework for sys design interview
+
+### What is an interviewer looking for in a sys design interview
+
+- ! The ability to ask good questions is an essential skill.
+- Person's ability to collaborate
+- To work under pressure
+- To resolve ambiguity constructively
+- Taking cost/tradeoffs ratio into consideration
+- Narrow mindedness, stubborness
+
+### Red flags for interviewers
+
+- Overengineering
+- Not taking cost/tradeoffs ratio into consideration
+
+### Steps
+
+* Step 1: understand the problem and establish design scope - first think, ask questions, then answer.
+  - Understand the requirements thoroughly, only then answer.
+  - One of the most important skills for an engineer is to ask the right questions, make the proper assumptions,
+    and gather all the information you need to build a system.
+  - Write your assumptions down on paper for later use.
+  - Questions examples:
+    - What specific features are we going to build?
+    - How many users do we expect?
+    - What are the anticipated numbers in 3, 6 months, a year from now<
+    - What is the company's tech stack?
+    - Is this mobile app, web app, or both?
+    - Any existing services we can use to simplify the design?
