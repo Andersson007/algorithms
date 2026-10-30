@@ -134,17 +134,32 @@ sharding separates large DBs into smaller, more easily managed parts called shar
 - Overengineering
 - Not taking cost/tradeoffs ratio into consideration
 
-### Steps
+## Interview framework
 
-* Step 1: understand the problem and establish design scope - first think, ask questions, then answer.
-  - Understand the requirements thoroughly, only then answer.
-  - One of the most important skills for an engineer is to ask the right questions, make the proper assumptions,
-    and gather all the information you need to build a system.
-  - Write your assumptions down on paper for later use.
-  - Questions examples:
-    - What specific features are we going to build?
-    - How many users do we expect?
-    - What are the anticipated numbers in 3, 6 months, a year from now<
-    - What is the company's tech stack?
-    - Is this mobile app, web app, or both?
-    - Any existing services we can use to simplify the design?
+### Step 1: Understand the problem and establish design scope
+
+First think, ask questions, then answer:
+- Understand the requirements thoroughly, only then answer.
+- One of the most important skills for an engineer is to ask the right questions, make the proper assumptions,
+  and gather all the information you need to build a system.
+- Write your assumptions down on paper for later use.
+- Questions examples:
+  - What specific features are we going to build?
+  - How many users do we expect?
+  - What are the anticipated numbers in 3, 6 months, a year from now<
+  - What is the company's tech stack?
+  - Is this mobile app, web app, or both?
+  - Any existing services we can use to simplify the design?
+
+### Step 2: Propose high level design
+
+- Propose high level design and reach an agreement with the interviewer on the design.
+- Treat your interviewer as a teammate and work together.
+- Draw box diagrams with key compontents
+
+### Important
+
+- Always ask for clarification. Do not assume your assumption is correct.
+- Understand the requirements of the problem.
+- There is neither the right answer nor the best answer.
+- Suggest multiple approaches if possible.
