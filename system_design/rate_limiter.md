@@ -4,7 +4,7 @@ Server side, not client side.
 
 API Gateway: Cloud microservices have become widely popular and rate limiting is usually
 implemented within a component called API gateway. API gateway is a fully managed
-service that supports rate limiting, SSL termination, authentication, IP whitelisting, servicing
+service that supports rate limiting, authentication, IP whitelisting, servicing
 static content, etc. API gateway is a middleware that stays in between you clinets and your API servers.
 
 Alternatively to API gateway, a rate limiter can be implemented on the API server-side.
@@ -22,7 +22,7 @@ Store the counter in in-memory cache (e.g., in Redis) because it's fast compared
    and checks if the limit is reached or not:
   * If the limit is reached, the request is rejected.
   * If the limit is not reached, the request is sent to API servers.
-       Meanwhile, the system increments the counter and saves it back to Redis.
+    Meanwhile, the system increments the counter and saves it back to Redis.
 
 ## Exceeding the rate limit
 
@@ -37,7 +37,7 @@ keep those orders to be processed later. In this case, such requests will be sen
 * Rules are stored on the disk. Workers frequently pull rules from the disk and store them in the cache.
 * When a client sends a request to the server, the request is sent to the rate limiter middleware first.
 * Rate limiter middleware loads rules from the cache. It fetches counters and last request
-timestamp from Redis cache. Based on the response, the rate limiter decides:
+  timestamp from Redis cache. Based on the response, the rate limiter decides:
   * if the request is not rate limited, it is forwarded to API servers.
   * if the request is rate limited, the rate limiter returns 429 too many requests error to
     the client. In the meantime, the request is either dropped or forwarded to the queue.
